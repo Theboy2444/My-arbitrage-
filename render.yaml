@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: arbitrage-site
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn arbitrage_site.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: arbitrage_site.settings
+      - key: SECRET_KEY
+        value: your-secret-key
